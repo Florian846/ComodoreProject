@@ -1,0 +1,10 @@
+CompileFlags:
+  Add: [
+    "-target", "mos6502",
+
+    "-D__CC65__",
+    "-D__CBM__",
+    "-D__PET__",
+
+    "-IC:/cc65/include"
+  ]
