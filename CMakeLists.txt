@@ -13,7 +13,7 @@ include_directories("C:/cc65/include")
 
 # Das Build-Target für den Compiler
 add_custom_target(cbm_build ALL
-        COMMAND ${CC65_BIN} -O -t pet -I . main.c TitelScreen/TitelScreen.c ScreenLoader/ScreenLoader.c TitelScreen/Titel.c OptionsScreen/OptionsScreen.c OptionsScreen/Options.c -o program.prg
+        COMMAND ${CC65_BIN} -O -t pet -I . main.c ScreenManager/ScreenManager.c TitelScreen/TitelScreen.c ScreenLoader/ScreenLoader.c TitelScreen/Titel.c OptionsScreen/OptionsScreen.c OptionsScreen/Options.c -o program.prg
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
         COMMENT "Erstelle CBM Programm (program.prg)..."
 )
@@ -21,6 +21,9 @@ add_custom_target(cbm_build ALL
 # Für die IDE (Pfade ergänzt)
 add_executable(new_target
         main.c
+        GameConfig.h
+        ScreenManager/ScreenManager.c
+        ScreenManager/ScreenManager.h
         TitelScreen/Titel.c
         TitelScreen/Titel.h
         TitelScreen/TitelScreen.c
