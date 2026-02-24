@@ -1,11 +1,12 @@
 #include <conio.h>
 #include "TitelScreen/Titel.h"
 #include "ScreenManager/ScreenManager.h"
+#include "OptionsScreen/Options.h"
 
 // Globale Spielkonfiguration
 unsigned char playerCount = 1;
 unsigned char computerPlayerCount = 0;
-unsigned int startingMoney = 500;
+unsigned int startingMoney = 50;
 unsigned char cardDecks = 1;
 
 int main(void) {
@@ -15,7 +16,14 @@ int main(void) {
 
     while(1) {
         if (kbhit()) {
-            handle_titel_input(cgetc());
+            char key = cgetc();
+
+            if (get_current_screen() == SCREEN_TITEL) {
+                handle_titel_input(key);
+            }
+            else if (get_current_screen() == SCREEN_OPTIONS) {
+                handle_options_input(key);
+            }
         }
 
         // Scroller nur auf Titel-Screen aktualisieren
@@ -23,6 +31,4 @@ int main(void) {
             update_titel_screen();
         }
     }
-
-    return 0;
 }

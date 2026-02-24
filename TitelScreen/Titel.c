@@ -4,6 +4,7 @@
 #include "../ScreenLoader/Screens.h"
 #include "../OptionsScreen/Options.h"
 #include "../ScreenManager/ScreenManager.h"
+#include "../Game/Game.h"
 
 void show_titel_screen(void) {
     clrscr();
@@ -16,8 +17,8 @@ void update_titel_screen(void) {
 }
 
 void handle_titel_input(char key) {
-    if (key == '1') {
-        // Später: start_game();
+    if (key == 34) {
+        start_game();
     }
     else if (key == 33) {
         show_options_menu();
