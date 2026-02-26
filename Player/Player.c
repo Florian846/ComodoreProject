@@ -9,6 +9,7 @@ Player* create_player(unsigned char id, unsigned int starting_money, unsigned ch
 
     player->id = id;
     player->money = starting_money;
+    player->current_bet = 0;
     player->card_count = 0;
     player->is_computer = is_computer;
 
@@ -82,6 +83,24 @@ unsigned char remove_money_from_player(Player* player, unsigned int amount) {
 
     player->money -= amount;
     return 1;  // Erfolgreich
+}
+
+// Einsatz setzen
+void set_player_bet(Player* player, unsigned int bet) {
+    if (!player) return;
+    player->current_bet = bet;
+}
+
+// Einsatz abrufen
+unsigned int get_player_bet(Player* player) {
+    if (!player) return 0;
+    return player->current_bet;
+}
+
+// Einsatz zuruecksetzen
+void clear_player_bet(Player* player) {
+    if (!player) return;
+    player->current_bet = 0;
 }
 
 // Kartenanzahl des Spielers abrufen

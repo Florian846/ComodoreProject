@@ -5,8 +5,8 @@
 // Statischer Manager (für globale Verwaltung)
 static CardManager* global_manager = 0;
 
-// Einfacher Zufallsgenerator ohne time()
-static unsigned char random_state = 42;
+// Zufallsgenerator - seed wird extern durch main-loop veraendert
+unsigned char random_state = 0;
 
 unsigned char simple_rand(void) {
     random_state = (random_state * 73 + 19) & 0xFF;
@@ -96,6 +96,12 @@ Card* get_card(CardManager* manager) {
 
     // Gib Zeiger auf aktuelle Karte und erhöhe Index
     return &manager->cards[manager->current_index++];
+}
+
+// Verbleibende Karten im Stapel
+unsigned char get_remaining_cards(CardManager* manager) {
+    if (!manager) return 0;
+    return manager->card_count - manager->current_index;
 }
 
 // Kartenstapel anzeigen (Debug)

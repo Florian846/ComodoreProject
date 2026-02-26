@@ -14,12 +14,16 @@ typedef struct {
     unsigned char current_index; // Position zum Abheben
 } CardManager;
 
+// Zufallsgenerator
+extern unsigned char random_state;
+
 // CardManager Funktionen
 CardManager* create_card_manager(unsigned char num_stacks);
 void destroy_card_manager(CardManager* manager);
 Card* get_all_cards(CardManager* manager, unsigned char* count);
 void shuffle_cards(Card* cards, unsigned char count);
 Card* get_card(CardManager* manager);
+unsigned char get_remaining_cards(CardManager* manager);
 void print_card_manager(CardManager* manager);
 
 #endif

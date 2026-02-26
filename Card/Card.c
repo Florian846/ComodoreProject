@@ -43,27 +43,29 @@ unsigned char get_card_value_points(Card card) {
 
 // Karte ausgeben
 void print_card(Card card) {
-    char suit_char;
-
-    // Farbesymbole
-    switch (card.suit) {
-        case SUIT_HEARTS:
-            suit_char = 3;      // Herz-Symbol
-            break;
-        case SUIT_DIAMONDS:
-            suit_char = 4;      // Karo-Symbol
-            break;
-        case SUIT_CLUBS:
-            suit_char = 5;      // Kreuz-Symbol
-            break;
-        case SUIT_SPADES:
-            suit_char = 6;      // Pik-Symbol
-            break;
-        default:
-            suit_char = '?';
+    /* kartenwert */
+    if (card.value == VALUE_10) {
+        cprintf("10");
+    } else {
+        cputc(card.value);
     }
 
-    cputc(card.value);
-    cputc(suit_char);
+    /* farbsymbol (c64 screencodes) */
+    switch (card.suit) {
+        case SUIT_HEARTS:
+            cputc(115);
+            break;
+        case SUIT_DIAMONDS:
+            cputc(122);
+            break;
+        case SUIT_CLUBS:
+            cputc(120);
+            break;
+        case SUIT_SPADES:
+            cputc(97);
+            break;
+        default:
+            cputc('?');
+    }
 }
 
